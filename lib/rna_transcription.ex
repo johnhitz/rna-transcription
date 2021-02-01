@@ -10,15 +10,12 @@ defmodule RnaTranscription do
   @spec to_rna([char]) :: [char]
   def to_rna(dna) do
     dna
-    |> Enum.map(fn x ->
-      transcribe(x)
-    end)
-    |> List.to_charlist()
+    |> Enum.map(&transcribe/1)
   end
 
-  def transcribe(?G), do: ?C
-  def transcribe(?C), do: ?G
-  def transcribe(?T), do: ?A
-  def transcribe(?A), do: ?U
+  defp transcribe(?G), do: ?C
+  defp transcribe(?C), do: ?G
+  defp transcribe(?T), do: ?A
+  defp transcribe(?A), do: ?U
 
 end
